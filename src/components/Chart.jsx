@@ -1,6 +1,9 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import Loader from './Loader';
+import PropTypes from 'prop-types'
+
+
 const Charts = ({ status, country, loading }) => {
     const fontFamily =
         "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif";
@@ -74,5 +77,11 @@ const Charts = ({ status, country, loading }) => {
 
     );
 };
+
+Charts.propTypes = {
+    loading: PropTypes.bool.isRequired,
+    // country: PropTypes.string.isRequired,
+    status: PropTypes.array.isRequired,
+}
 
 export default Charts;

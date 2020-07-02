@@ -33,6 +33,7 @@ const SelectCountry = ({ countries, changeCountry }) => {
 
 SelectCountry.propTypes = {
     countries: PropTypes.array.isRequired,
+    changeCountry: PropTypes.func.isRequired,
 }
 
 export default SelectCountry

@@ -1,5 +1,8 @@
 import React from 'react'
 import Loader from './Loader'
+import PropTypes from 'prop-types'
+
+
 const StatusItem = ({ item: { type, value }, lastUpdate, loading }) => {
     var format = new Intl.NumberFormat('en-IN', {
         style: 'currency',
@@ -31,6 +34,12 @@ const StatusItem = ({ item: { type, value }, lastUpdate, loading }) => {
             <p>{types[type].about}</p>
         </div>
     )
+}
+
+StatusItem.propTypes = {
+    item: PropTypes.object.isRequired,
+    lastUpdate: PropTypes.string.isRequired,
+    loading: PropTypes.bool.isRequired,
 }
 
 export default StatusItem

@@ -58,6 +58,7 @@ code {
 	top: 1.5em;
 	color: rgb(98, 61, 61);
 	display: none;
+	cursor: pointer;
 }
 
 .sidenav-trigger i {

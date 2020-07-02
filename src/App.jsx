@@ -6,7 +6,7 @@ import Status from './components/Status';
 import SelectCountry from './components/SelectCountry';
 import axios from 'axios';
 import Chart from './components/Chart';
-
+import Credit from './components/Credit'
 
 const App = () => {
   const config = {
@@ -51,7 +51,7 @@ const App = () => {
   }
   return (
     <>
-      <a href="#" data-target="slide-out" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+      <span data-target="slide-out" className="sidenav-trigger"><i className="material-icons">menu</i></span>
       <div className={`sidenav${width > 600 ? '-1' : ''}`} id="slide-out">
         <SelectCountry countries={countries} changeCountry={changeCountry} />
       </div>
@@ -60,6 +60,7 @@ const App = () => {
         <Status lastUpdate={lastUpdate} loading={loading} status={status} />
         <hr />
         <Chart loading={loading} country={country} status={status} />
+        <Credit name="Nilanjan Deb" />
       </div>
     </>
   )
