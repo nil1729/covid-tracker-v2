@@ -1,72 +1,87 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
 }
-
 
 ::-webkit-scrollbar {
-  width: 0 !important;
+	width: 0 !important;
 }
 
-.sidenav-1 {
-  height: 100%;
-  width: 300px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: rgb(221, 214, 214);
-  overflow-x: hidden;
-  padding-top: 20px;
+.sidenav-1,
+.sidenav {
+	height: 100%;
+	width: 300px;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: rgb(221, 214, 214);
+	overflow-x: hidden;
+	padding-top: 20px;
 }
 
 .main {
-  margin-left: 250px;
+	margin-left: 250px;
 }
 
 .statusItem p {
-  margin: 1px 0;
+	margin: 1px 0;
 }
 
 .statusItem p:nth-child(1) {
-  font-size: 1.3em;
-  font-weight: 400;
-  letter-spacing: 0.5px;
+	font-size: 1.3em;
+	font-weight: 400;
+	letter-spacing: 0.5px;
 }
 
 .statusItem p:nth-child(3) {
-  font-size: 1.2em;
-  color: rgb(41, 41, 36);
+	font-size: 1.2em;
+	color: rgb(41, 41, 36);
 }
 
 .statusItem p:nth-child(4) {
-  font-size: 1.1em;
+	font-size: 1.1em;
+}
+
+.sidenav-trigger {
+	position: fixed;
+	left: 1em;
+	top: 1.5em;
+	color: rgb(98, 61, 61);
+	display: none;
+}
+
+.sidenav-trigger i {
+	font-size: 2.5em;
 }
 
 @media only screen and (max-width: 600px) {
-  .main {
-    margin: 0 !important;
-  }
+	.main {
+		margin: 0 !important;
+	}
 
-  .sidenav-1 {
-    display: none;
-  }
+	.flow-text {
+		font-size: 1.3em !important;
+	}
 
-  .chart.container {
-    width: 90%;
-  }
+	.sidenav-trigger {
+		display: block;
+	}
 
+	.chart.container {
+		width: 90%;
+	}
 
-  .statusItem.container:nth-child(1) {
-    margin-top: 1em;
-  }
+	.statusItem.container:nth-child(1) {
+		margin-top: 1em;
+	}
 }

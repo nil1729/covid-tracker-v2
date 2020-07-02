@@ -12,6 +12,7 @@ const App = () => {
   const config = {
     baseURL: 'https://covid19.mathdro.id/api'
   };
+  const [width, setWidth] = useState(window.innerWidth);
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -38,6 +39,8 @@ const App = () => {
     if (countries.length === 0) {
       fetchCountries();
     }
+    M.AutoInit();
+    setWidth(window.innerWidth);
     // eslint-disable-next-line
   }, [countries]);
   const changeCountry = async (country) => {
@@ -48,8 +51,9 @@ const App = () => {
   }
   return (
     <>
-      <div className="sidenav-1">
-        <SelectCountry loading={loading} countries={countries} changeCountry={changeCountry} />
+      <a href="#" data-target="slide-out" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+      <div className={`sidenav${width > 600 ? '-1' : ''}`} id="slide-out">
+        <SelectCountry countries={countries} changeCountry={changeCountry} />
       </div>
       <div className="main">
         <Logo />
