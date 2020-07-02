@@ -50,7 +50,7 @@ const Charts = ({ status, country, loading }) => {
     return (
         <div className="row">
             <div className="col s12">
-                <div className='container py-2 center' style={{ height: '50vh' }}>
+                <div className='chart container py-2 center' style={{ height: '50vh' }}>
                     {
                         loading ? <Loader size="big" color="green" /> : (<Bar
                             data={{

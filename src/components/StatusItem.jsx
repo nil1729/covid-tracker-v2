@@ -26,7 +26,7 @@ const StatusItem = ({ item: { type, value }, lastUpdate, loading }) => {
     return (
         <div className="statusItem container grey lighten-2" style={{ padding: '10px 1em', borderBottom: `6px solid ${types[type].color}`, borderRadius: '5px', width: '80%' }}>
             <p style={{ color: `${types[type].color}` }}>{types[type].title}</p>
-            <p className="flow-text teal-text">{loading ? <Loader size="small" color="blue" /> : `${format.format(value).substr(1)}`}</p>
+            {loading ? <Loader size="small" color="blue" /> : (<p className="flow-text teal-text">{format.format(value).substr(1)}</p>)}
             <p>{lastUpdate}</p>
             <p>{types[type].about}</p>
         </div>

@@ -21,14 +21,13 @@ const App = () => {
     setLoading(true);
     const res = await axios.get('/countries', config);
     setCountries(res.data.countries);
+    await fetchIP();
     setLoading(false);
   };
   const fetchIP = async () => {
-    setLoading(true);
-    const res = await axios.get('https://geo.ipify.org/api/v1?apiKey=at_OgOqHFuyJHD7CmBXvfDyWT7fbOJVX');
+    const res = await axios.get('https://geo.ipify.org/api/v1?apiKey=at_1PomgzqEvF2gybGy9H6L21dMrztf9');
     setCountry(res.data.location.country);
     await fetchCountryStatus(res.data.location.country);
-    setLoading(false);
   };
   const fetchCountryStatus = async (country) => {
     const res = await await axios.get(`/countries/${country}`, config);
@@ -39,10 +38,8 @@ const App = () => {
     if (countries.length === 0) {
       fetchCountries();
     }
-    if (!country) {
-      fetchIP();
-    }
-  });
+    // eslint-disable-next-line
+  }, [countries]);
   const changeCountry = async (country) => {
     setLoading(true);
     setCountry(country);
