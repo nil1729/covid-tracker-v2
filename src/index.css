@@ -12,6 +12,42 @@ code {
     monospace;
 }
 
-p {
-  margin: 3px 0;
+
+::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+.sidenav-1 {
+  height: 100%;
+  width: 300px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(221, 214, 214);
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.main {
+  margin-left: 250px;
+}
+
+.statusItem p {
+  margin: 1px 0;
+}
+
+.statusItem p:nth-child(1) {
+  font-size: 1.3em;
+  font-weight: 100;
+  letter-spacing: 0.5px;
+}
+
+.statusItem p:nth-child(3) {
+  font-size: 1.2em;
+  color: rgb(41, 41, 36);
+}
+
+.statusItem p:nth-child(4) {
+  font-size: 1.1em;
 }

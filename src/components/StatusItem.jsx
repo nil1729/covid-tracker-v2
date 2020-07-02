@@ -1,25 +1,33 @@
 import React, { useState } from 'react'
 
-const StatusItem = ({ item: { type, value } }) => {
+const StatusItem = ({ item: { type, value }, lastUpdate }) => {
+    var format = new Intl.NumberFormat('en-IN', {
+        style: 'currency',
+        currency: 'INR',
+        minimumFractionDigits: 0,
+    });
     const types = {
         confirmed: {
             title: 'Confirmed Cases',
-            about: 'Number of Active cases of COVID-19'
+            about: 'Number of Active cases of COVID-19',
+            color: '#8c7ef7'
         },
         recovered: {
             title: 'Recovered',
-            about: 'Number of recoveries from COVID-19'
+            about: 'Number of recoveries from COVID-19',
+            color: 'green'
         },
         deaths: {
             title: 'Deaths',
-            about: 'Number of deaths caused by COVID-19'
+            about: 'Number of deaths caused by COVID-19',
+            color: '#f05d65'
         }
     }
     return (
-        <div className="container grey lighten-2" style={{ padding: '1em', borderBottom: '5px solid green', borderRadius: '5px' }}>
-            <p>{types[type].title}</p>
-            <p className="flow-text">{value}</p>
-            <p>Wed Jul 01 2020</p>
+        <div className="statusItem container grey lighten-2" style={{ padding: '10px 1em', borderBottom: `6px solid ${types[type].color}`, borderRadius: '5px', width: '80%' }}>
+            <p style={{ color: `${types[type].color}` }}>{types[type].title}</p>
+            <p className="flow-text teal-text">{format.format(value).substr(1)}</p>
+            <p>{lastUpdate}</p>
             <p>{types[type].about}</p>
         </div>
     )

@@ -5,6 +5,8 @@ import Logo from './components/Logo';
 import Status from './components/Status';
 import SelectCountry from './components/SelectCountry';
 import axios from 'axios';
+import Chart from './components/Chart';
+
 
 const App = () => {
   const config = {
@@ -13,6 +15,7 @@ const App = () => {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [lastUpdate, setLastUpdate] = useState(new Date().toDateString());
   const [status, setStatus] = useState([{ type: 'confirmed', value: 0 }, { type: 'recovered', value: 0 }, { type: 'deaths', value: 0 }]);
   const fetchCountries = async () => {
     const res = await axios.get('/countries', config);
@@ -25,6 +28,7 @@ const App = () => {
   };
   const fetchCountryStatus = async (country) => {
     const res = await await axios.get(`/countries/${country}`, config);
+    setLastUpdate(new Date(res.data.lastUpdate).toDateString());
     setStatus([{ type: 'confirmed', value: res.data.confirmed.value }, { type: 'recovered', value: res.data.recovered.value }, { type: 'deaths', value: res.data.deaths.value }]);
   };
   useEffect(() => {
@@ -37,15 +41,22 @@ const App = () => {
   });
   const changeCountry = async (country) => {
     setLoading(true);
+    setCountry(country);
     await fetchCountryStatus(country);
     setLoading(false);
   }
   return (
-    <div className="container" style={{ width: '90%' }}>
-      <Logo />
-      <Status loading={loading} status={status} />
-      <SelectCountry countries={countries} changeCountry={changeCountry} />
-    </div>
+    <>
+      <div className="sidenav-1">
+        <SelectCountry loading={loading} countries={countries} changeCountry={changeCountry} />
+      </div>
+      <div className="main">
+        <Logo />
+        <Status lastUpdate={lastUpdate} loading={loading} status={status} />
+        <hr />
+        <Chart country={country} status={status} />
+      </div>
+    </>
   )
 }
 

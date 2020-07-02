@@ -13,7 +13,7 @@ const SelectCountry = ({ countries, changeCountry }) => {
         setCurrent("");
     };
     return (
-        <div className="container">
+        <div className="container" style={{ width: '100%' }}>
             <div className="row">
                 <div className="input-field col s12">
                     <select value={current} onChange={onChange}>
