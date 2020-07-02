@@ -22,7 +22,7 @@ const App = () => {
     setLoading(true);
     const res = await axios.get('/countries', config);
     setCountries(res.data.countries);
-    await fetchIP();
+    // await fetchIP();
     setLoading(false);
   };
   const fetchIP = async () => {

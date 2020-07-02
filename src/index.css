@@ -29,6 +29,11 @@ code {
 	padding-top: 20px;
 }
 
+.sidenav {
+	background-color: white !important;
+	z-index: 9999;
+}
+
 .main {
 	margin-left: 250px;
 }
