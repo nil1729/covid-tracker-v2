@@ -18,13 +18,17 @@ const App = () => {
   const [lastUpdate, setLastUpdate] = useState(new Date().toDateString());
   const [status, setStatus] = useState([{ type: 'confirmed', value: 0 }, { type: 'recovered', value: 0 }, { type: 'deaths', value: 0 }]);
   const fetchCountries = async () => {
+    setLoading(true);
     const res = await axios.get('/countries', config);
     setCountries(res.data.countries);
+    setLoading(false);
   };
   const fetchIP = async () => {
+    setLoading(true);
     const res = await axios.get('https://geo.ipify.org/api/v1?apiKey=at_OgOqHFuyJHD7CmBXvfDyWT7fbOJVX');
     setCountry(res.data.location.country);
     await fetchCountryStatus(res.data.location.country);
+    setLoading(false);
   };
   const fetchCountryStatus = async (country) => {
     const res = await await axios.get(`/countries/${country}`, config);
@@ -54,7 +58,7 @@ const App = () => {
         <Logo />
         <Status lastUpdate={lastUpdate} loading={loading} status={status} />
         <hr />
-        <Chart country={country} status={status} />
+        <Chart loading={loading} country={country} status={status} />
       </div>
     </>
   )

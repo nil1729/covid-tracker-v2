@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Loader = () => {
+const Loader = ({ size, color }) => {
     return (
         <>
-            <div className="preloader-wrapper big active">
-                <div className="spinner-layer spinner-blue-only">
+            <div className={`preloader-wrapper ${size} active`}>
+                <div className={`spinner-layer spinner-${color}-only`}>
                     <div className="circle-clipper left">
                         <div className="circle"></div>
                     </div><div className="gap-patch">

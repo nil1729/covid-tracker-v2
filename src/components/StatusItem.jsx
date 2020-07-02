@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-
-const StatusItem = ({ item: { type, value }, lastUpdate }) => {
+import React from 'react'
+import Loader from './Loader'
+const StatusItem = ({ item: { type, value }, lastUpdate, loading }) => {
     var format = new Intl.NumberFormat('en-IN', {
         style: 'currency',
         currency: 'INR',
@@ -26,7 +26,7 @@ const StatusItem = ({ item: { type, value }, lastUpdate }) => {
     return (
         <div className="statusItem container grey lighten-2" style={{ padding: '10px 1em', borderBottom: `6px solid ${types[type].color}`, borderRadius: '5px', width: '80%' }}>
             <p style={{ color: `${types[type].color}` }}>{types[type].title}</p>
-            <p className="flow-text teal-text">{format.format(value).substr(1)}</p>
+            <p className="flow-text teal-text">{loading ? <Loader size="small" color="blue" /> : `${format.format(value).substr(1)}`}</p>
             <p>{lastUpdate}</p>
             <p>{types[type].about}</p>
         </div>

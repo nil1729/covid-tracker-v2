@@ -1,7 +1,7 @@
 import React from 'react';
-import { Bar, Pie } from 'react-chartjs-2';
-
-const Charts = ({ status, country }) => {
+import { Bar } from 'react-chartjs-2';
+import Loader from './Loader';
+const Charts = ({ status, country, loading }) => {
     const fontFamily =
         "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif";
     const backgroundColors = [
@@ -50,22 +50,24 @@ const Charts = ({ status, country }) => {
     return (
         <div className="row">
             <div className="col s12">
-                <div className='container py-2' style={{ height: '50vh' }}>
-                    <Bar
-                        data={{
-                            labels: ['Confirmed Cases', 'Recovered', 'Deaths'],
-                            datasets: [dataSet]
-                        }}
-                        options={{
-                            scales: scaleConfig,
-                            title: chartTitleStyle,
-                            maintainAspectRatio: false,
-                            tooltips: tooltipConfig,
-                            legend: {
-                                display: false,
-                            },
-                        }}
-                    />
+                <div className='container py-2 center' style={{ height: '50vh' }}>
+                    {
+                        loading ? <Loader size="big" color="green" /> : (<Bar
+                            data={{
+                                labels: ['Confirmed Cases', 'Recovered', 'Deaths'],
+                                datasets: [dataSet]
+                            }}
+                            options={{
+                                scales: scaleConfig,
+                                title: chartTitleStyle,
+                                maintainAspectRatio: false,
+                                tooltips: tooltipConfig,
+                                legend: {
+                                    display: false,
+                                },
+                            }}
+                        />)
+                    }
                 </div>
             </div>
         </div>
