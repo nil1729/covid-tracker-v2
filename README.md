@@ -1,4 +1,4 @@
-# Event Booking App
+# Covid 19 Tracker Web App
 
 - #### This site is live [here](https://covid-v2.netlify.app).
 - #### Github Repository [link](https://github.com/nil1729/covid-tracker-v2).
